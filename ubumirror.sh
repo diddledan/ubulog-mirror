@@ -6,7 +6,9 @@ else
     DIR="/var/lib/ubuntu-chatlogs"
 fi
 
-[ ! -e "$DIR" -o ! -d "$DIR" ] && rm -rf "$DIR" && mkdir -p "$DIR/{mirror,spool}"
+[ ! -e "$DIR" -o ! -d "$DIR" ] && rm -rf "$DIR" && mkdir -p "$DIR"
+[ ! -e "$DIR/mirror" -o ! -d "$DIR/mirror" ] && rm -rf "$DIR/mirror" && mkdir -p "$DIR/mirror"
+[ ! -e "$DIR/spool" -o ! -d "$DIR/spool" ] && rm -rf "$DIR/spool" && mkdir -p "$DIR/spool"
 
 cd "$DIR/mirror"
 
