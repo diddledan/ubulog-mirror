@@ -51,3 +51,4 @@ while (true); do
     # wait for 1800 seconds (30 minutes) before running again
     sleep 1800
 done
+
