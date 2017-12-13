@@ -6,11 +6,22 @@ else
     DIR="/var/lib/ubuntu-chatlogs"
 fi
 
-[ ! -e "$DIR" -o ! -d "$DIR" ] && rm -rf "$DIR" && mkdir -p "$DIR"
-[ ! -e "$DIR/mirror" -o ! -d "$DIR/mirror" ] && rm -rf "$DIR/mirror" && mkdir -p "$DIR/mirror"
-[ ! -e "$DIR/spool" -o ! -d "$DIR/spool" ] && rm -rf "$DIR/spool" && mkdir -p "$DIR/spool"
+quit() {
+    echo "$1"
+    exit 1
+}
 
-cd "$DIR/mirror"
+if [ ! -e "$DIR" -o ! -d "$DIR" ]; then
+    rm -rf "$DIR" && mkdir -p "$DIR" || quit "unable to make '$DIR'"
+fi
+if [ ! -e "$DIR/mirror" -o ! -d "$DIR/mirror" ]; then
+    rm -rf "$DIR/mirror" && mkdir -p "$DIR/mirror" || quit "unable to make '$DIR/mirror'"
+fi
+if [ ! -e "$DIR/spool" -o ! -d "$DIR/spool" ]; then
+    rm -rf "$DIR/spool" && mkdir -p "$DIR/spool" || quit "unable to make '$DIR/spool'"
+fi
+
+cd "$DIR/mirror" || quit "unable to cd into '$DIR/mirror'"
 
 do_sync() {
     DIR="$1"

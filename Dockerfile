@@ -8,8 +8,11 @@ RUN apt-get update && apt-get install -yqq wget rsync ruby libicu55 && apt-get c
 COPY --from=uchardet /usr/local/bin/uchardet /usr/local/bin/uchardet
 COPY --from=uchardet /var/lib/gems /var/lib/gems
 
-RUN mkdir -p /var/lib/ubuntu-chatlogs /usr/share/ubuntu-chatlogs
+RUN useradd -u 1000 -U -M mirroruser
+RUN mkdir -p /var/lib/ubuntu-chatlogs /usr/share/ubuntu-chatlogs && \
+    chown 1000:1000 /var/lib/ubuntu-chatlogs
 WORKDIR /var/lib/ubuntu-chatlogs
 COPY . /usr/share/ubuntu-chatlogs
 
+USER mirroruser
 CMD [ "/bin/bash", "/usr/share/ubuntu-chatlogs/ubumirror.sh" ]
