@@ -56,7 +56,6 @@ jobs:
         namespace: default
         manifests: |
           manifests/deployment.yml
-          manifests/service.yml
         images: |
           ubuntuchatlog.azurecr.io/danik8s:${{ github.sha }}
         imagepullsecrets: |
