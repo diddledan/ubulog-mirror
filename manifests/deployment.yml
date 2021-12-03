@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: "chatlog-mirror"
-          image: "ubuntuchatlog.azurecr.io/danik8s"
+          image: "diddledan/ubuntu-chatlog-mirror"
           volumeMounts:
             - mountPath: "/var/lib/ubuntu-chatlogs"
               name: chatlogs
