@@ -21,4 +21,4 @@ spec:
       volumes:
         - name: chatlogs
           persistentVolumeClaim:
-          claimName: ubuntu-chatlogs
+            claimName: ubuntu-chatlogs
