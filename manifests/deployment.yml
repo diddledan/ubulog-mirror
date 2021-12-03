@@ -1,19 +1,20 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: "danik8s-d1e8"
+  name: "chatlog-mirror"
+  namespace: "ubuntu-chatlogs"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "danik8s-d1e8"
+      app: "chatlog-mirror"
   template:
     metadata:
       labels:
-        app: "danik8s-d1e8"
+        app: "chatlog-mirror"
     spec:
       containers:
-        - name: "danik8s-d1e8"
+        - name: "chatlog-mirror"
           image: "ubuntuchatlog.azurecr.io/danik8s"
           volumeMounts:
             - mountPath: "/var/lib/ubuntu-chatlogs"
