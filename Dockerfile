@@ -4,7 +4,6 @@ WORKDIR /var/lib/ubuntu-chatlogs
 
 RUN apt-get update && \
     apt-get install -yqq \
-        libicu55 \
         rsync \
         uchardet \
         wget \
