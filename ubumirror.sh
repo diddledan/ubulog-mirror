@@ -37,7 +37,7 @@ do_sync() {
             channel="$(basename "$channel_file" .txt)"
 
             mkdir -p "$DIR/spool/$channel"
-            sourcecodec="$(/usr/local/bin/uchardet "$channel_file" | awk '{print $1}')"
+            sourcecodec="$(/usr/bin/uchardet "$channel_file" | awk '{print $1}')"
             tmp_file="$(mktemp)"
             final_file="$DIR/spool/$channel/$channel.$(date --date "$date" +'%Y-%m-%d')"
             iconv -f "${sourcecodec}" -t UTF-8 "$channel_file" >"$tmp_file"
