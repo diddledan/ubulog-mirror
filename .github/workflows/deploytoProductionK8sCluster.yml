@@ -46,14 +46,6 @@ jobs:
         tags: |
           diddledan/ubuntu-chatlog-mirror:${{ github.sha }}
           diddledan/ubuntu-chatlog-mirror:latest
-    
-    - uses: azure/k8s-deploy@v1.2
-      with:
-        namespace: ubuntu-chatlogs
-        manifests: |
-          manifests/deployment.yml
-        images: |
-          diddledan/ubuntu-chatlog-mirror:${{ github.sha }}
 
     - name: Create namespace
       run: |
