@@ -41,8 +41,9 @@ do_sync() {
             tmp_file="$(mktemp)"
             final_file="$DIR/spool/$channel/$channel.$(date --date "$date" +'%Y-%m-%d')"
             iconv -f "${sourcecodec}" -t UTF-8 "$channel_file" >"$tmp_file"
-            touch "$final_file"; chmod 644 "$final_file"
-                    rsync --inplace "$tmp_file" "$final_file"
+            touch "$final_file";
+            # chmod 644 "$final_file"
+            rsync --inplace "$tmp_file" "$final_file"
             rm "$tmp_file"
         done
 
