@@ -30,7 +30,7 @@ do_sync() {
 
     while [ "$date" != "$end" ]; do
         wget --quiet -c -l inf -m -N -np -t inf \
-            --wait=2 --random-wait --retry-connrefused \
+            --random-wait --retry-connrefused \
             -A "*.txt" -R "\#*.html" "http://irclogs.ubuntu.com/$date/"
 
         for channel_file in $(ls "$DIR/mirror/irclogs.ubuntu.com/$date/"\#*.txt); do
