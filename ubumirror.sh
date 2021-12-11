@@ -54,13 +54,13 @@ do_sync() {
 }
 
 # sync everything on startup
-do_sync "$DIR" "2004/07/05" "$(date --date "tomorrow" +'%Y/%m/%d')"
+do_sync "$DIR" "2004/07/05" "$(date "yesterday" +'%Y/%m/%d')"
 
 # run a loop fetching today's logs (30-minute intervals)
 while (true); do
     # do yesterday, today, and "tomorrow" to naively cope with timezones because I don't know what timezone the bot runs under
-    do_sync "$DIR" "$(date --date "yesterday" +'%Y/%m/%d')" "$(date --date "tomorrow" +'%Y/%m/%d')"
-    # wait for 1800 seconds (30 minutes) before running again
-    sleep 1800
+    do_sync "$DIR" "$(date --date "yesterday" +'%Y/%m/%d')" "$(date --date "yesterday" +'%Y/%m/%d')"
+    # wait for 86400 seconds (24 hours) before running again
+    sleep 86400
 done
 
