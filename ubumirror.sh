@@ -6,6 +6,9 @@ else
     DIR="/var/lib/ubuntu-chatlogs"
 fi
 
+# Ensure the timezone is UTC.
+export TZ=UTC
+
 quit() {
     echo "$1"
     exit 1
@@ -67,7 +70,7 @@ do_sync "$DIR" "$start_date" "$(date --date "yesterday 23:59" +'%Y/%m/%d')"
 
 # run a loop fetching today's logs (30-minute intervals)
 while (true); do
-    # do yesterday, today, and "tomorrow" to naively cope with timezones because I don't know what timezone the bot runs under
+    # do yesterday only
     do_sync "$DIR" "$(date --date "yesterday 00:00" +'%Y/%m/%d')" "$(date --date "yesterday 23:59" +'%Y/%m/%d')"
     # wait for 24 hours before running again
     sleep 86400
