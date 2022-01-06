@@ -66,12 +66,12 @@ start_date="2004/07/05"
 if [ -f last_sync_date ]; then
     start_date=$(cat last_sync_date)
 fi
-do_sync "$DIR" "$start_date" "$(date --date "yesterday 23:59" +'%Y/%m/%d')"
+do_sync "$DIR" "$start_date" "$(date --date "today" +'%Y/%m/%d')"
 
 # run a loop fetching today's logs (30-minute intervals)
 while (true); do
     # do yesterday only
-    do_sync "$DIR" "$(date --date "yesterday 00:00" +'%Y/%m/%d')" "$(date --date "yesterday 23:59" +'%Y/%m/%d')"
+    do_sync "$DIR" "$(date --date "yesterday" +'%Y/%m/%d')" "$(date --date "today" +'%Y/%m/%d')"
     # wait for 24 hours before running again
     sleep 24h
 done
