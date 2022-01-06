@@ -73,6 +73,6 @@ while (true); do
     # do yesterday only
     do_sync "$DIR" "$(date --date "yesterday 00:00" +'%Y/%m/%d')" "$(date --date "yesterday 23:59" +'%Y/%m/%d')"
     # wait for 24 hours before running again
-    sleep 86400
+    sleep 24h
 done
 
