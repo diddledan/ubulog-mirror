@@ -64,10 +64,13 @@ do_sync() {
 # sync everything on startup
 start_date="2004/07/05"
 if [ -f last_sync_date ]; then
-    start_date=$(cat last_sync_date)
+    start_date="$(cat last_sync_date)"
 fi
+yesterday="$(date --date "yesterday" +'%Y/%m/%d')"
 end_date="$(date --date "today" +'%Y/%m/%d')"
-do_sync "$DIR" "$start_date" "$end_date"
+if [ "$start_date" != "$yesterday" ]; then
+    do_sync "$DIR" "$start_date" "$end_date"
+fi
 sleep 24h
 
 start_date="$(date --date "$end_date + 1 days" +'%Y/%m/%d')"
